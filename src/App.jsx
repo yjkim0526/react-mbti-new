@@ -73,36 +73,42 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
-      <header className="container mx-auto px-4 mb-8">
-        <div className="flex items-center justify-center">
-          <img src={myImage} alt="로고" className="w-12 h-12" />
-          <h1 className="text-3xl font-bold text-center ml-2">MBTI 테스트</h1>
+    <div className="flex flex-col min-h-screen">
+      <header className="bg bg-green-600 text-white py-4 shadow-md rounded">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center">
+            <img src={myImage} alt="로고" className="w-12 h-12" />
+            <h1 className="text-3xl font-bold text-center ml-2">MBTI 테스트</h1>
+          </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4">
-        <Routes>
-          {/* 메인 테스트 페이지 */}
-          <Route path="/" element={<Test />} />
-          
-          {/* 테스트 결과 페이지 */}
-          <Route path="/result/:mbtiResult" element={<SharedResult />} />
-          
-          {/* 404 페이지 */}
-          <Route path="*" element={
-            <div className="text-center py-10">
-              <h1 className="text-2xl font-bold">페이지를 찾을 수 없습니다</h1>
-              <a href="/" className="text-blue-500 hover:underline mt-4 block">
-                테스트 다시하기
-              </a>
-            </div>
-          } />
-        </Routes>
-      </div>
+      <main className="flex-grow bg-gray-100 py-8">
+        <div className="container mx-auto px-4">
+          <Routes>
+            {/* 메인 테스트 페이지 */}
+            <Route path="/" element={<Test />} />
+            
+            {/* 테스트 결과 페이지 */}
+            <Route path="/result/:mbtiResult" element={<SharedResult />} />
+            
+            {/* 404 페이지 */}
+            <Route path="*" element={
+              <div className="text-center py-10">
+                <h1 className="text-2xl font-bold">페이지를 찾을 수 없습니다</h1>
+                <a href="/" className="text-blue-500 hover:underline mt-4 block">
+                  테스트 다시하기
+                </a>
+              </div>
+            } />
+          </Routes>
+        </div>
+      </main>
 
-      <footer className="container mx-auto px-4 mt-8 text-center text-gray-600">
-        <p>© 2024 MBTI 테스트. All rights reserved.</p>
+      <footer className="bg-gray-500 text-gray-200 py-4 mt-auto">
+        <div className="container mx-auto px-4 text-center">
+          <p>© 2024 MBTI 테스트. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );
