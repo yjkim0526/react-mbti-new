@@ -59,7 +59,7 @@ function Result({ mbtiResult }) {
         className="text-xl prose prose-lg max-w-none mb-8"
         dangerouslySetInnerHTML={{ __html: resultData?.content }} 
       />
-      <div className="flex justify-center gap-4">
+      <div className="md:flex justify-center gap-4">
         <button
           onClick={shareToKakao}
           className="px-6 py-3 bg-yellow-300 text-black rounded-full hover:bg-yellow-400 transition-colors"
