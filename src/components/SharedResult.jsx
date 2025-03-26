@@ -24,9 +24,9 @@ function SharedResult() {
       </h2>
       
       <div className="mb-8">
-        <h3 className="text-xl font-bold mb-4">{resultData.title}</h3>
+        <h3 className="text-2xl font-bold mb-4 text-center">{resultData.title}</h3>
         <div 
-          className="text-gray-700 leading-relaxed"
+          className="text-gray-800 leading-relaxed text-lg"
           dangerouslySetInnerHTML={{ __html: resultData.content }}
         />
       </div>
@@ -34,7 +34,7 @@ function SharedResult() {
       <div className="text-center">
         <a
           href="/"
-          className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
+          className="inline-block bg-slate-500 text-white px-6 py-2 rounded-full hover:bg-slate-600 transition-colors"
         >
           테스트 하러가기
         </a>

@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Test from './components/Test'
-import Result from './components/Result'
 import SharedResult from './components/SharedResult'
-import { questions_mbti } from './data/questions'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import './App.css'
 import myImage from './assets/icons8-tree-80.png'
 
@@ -17,71 +17,9 @@ function App() {
     }
   }, []);
 
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [mbtiResult, setMbtiResult] = useState({
-    E: 0, I: 0,
-    S: 0, N: 0,
-    T: 0, F: 0,
-    J: 0, P: 0
-  })
-  const [showResult, setShowResult] = useState(false)
-  const [answers, setAnswers] = useState([])
-
-  const handleAnswer = (answer) => {
-    const question = questions_mbti[currentQuestion]
-    const mbtiType = answer === "그렇다" ? question.YES : question.NO
-    
-    setMbtiResult(prev => ({
-      ...prev,
-      [mbtiType]: prev[mbtiType] + 1
-    }))
-
-    if (currentQuestion < questions_mbti.length - 1) {
-      setCurrentQuestion(prev => prev + 1)
-    } else {
-      // 최종 MBTI 결과 계산
-      const finalType = [
-        mbtiResult.E > mbtiResult.I ? 'E' : 'I',
-        mbtiResult.S > mbtiResult.N ? 'S' : 'N',
-        mbtiResult.T > mbtiResult.F ? 'T' : 'F',
-        mbtiResult.J > mbtiResult.P ? 'J' : 'P'
-      ].join('')
-      
-      setMbtiResult(finalType)
-      setShowResult(true)
-    }
-  }
-
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-      // 이전 답변도 제거
-      setAnswers(answers.slice(0, -1));
-    }
-  };
-
-  const handleReset = () => {
-    setCurrentQuestion(0);
-    setMbtiResult({
-      E: 0, I: 0,
-      S: 0, N: 0,
-      T: 0, F: 0,
-      J: 0, P: 0
-    });
-    setShowResult(false);
-    setAnswers([]);
-  };
-
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="bg bg-green-600 text-white py-4 shadow-md rounded">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center">
-            <img src={myImage} alt="로고" className="w-12 h-12" />
-            <h1 className="text-3xl font-bold text-center ml-2">MBTI 테스트</h1>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex-grow bg-gray-100 py-8">
         <div className="container mx-auto px-4">
@@ -105,11 +43,7 @@ function App() {
         </div>
       </main>
 
-      <footer className="bg-gray-500 text-gray-200 py-4 mt-auto">
-        <div className="container mx-auto px-4 text-center">
-          <p>© 2024 MBTI 테스트. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

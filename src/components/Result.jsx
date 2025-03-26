@@ -25,11 +25,6 @@ function Result({ mbtiResult }) {
             webUrl: shareUrl,
           },
         },
-        // social: {
-        //   likeCount: 286,
-        //   commentCount: 45,
-        //   sharedCount: 845
-        // },
         buttons: [
           {
             title: '결과 확인하기',
@@ -71,7 +66,7 @@ function Result({ mbtiResult }) {
         </button>
         <button
           onClick={handleRetryClick}
-          className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-green-600 transition-colors w-64 mx-auto"
+          className="px-6 py-3 bg-slate-400 text-white rounded-full hover:bg-slate-500 transition-colors w-64 mx-auto"
         >
           다시 테스트하기
         </button>
