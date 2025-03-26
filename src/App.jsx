@@ -82,7 +82,13 @@ function App() {
       {/* Main content */}
       <main className="m-2 flex-1 flex flex-col items-center pt-8">
         <Routes>
-          <Route path="/" element={<Test />} />
+          <Route path="/" element={<Test 
+            currentQuestion={currentQuestion}
+            handleAnswer={handleAnswer}
+            handlePrevious={handlePrevious}
+            showResult={showResult}
+            mbtiResult={mbtiResult}
+          />} />
           <Route path="/result/:mbtiResult" element={<SharedResult />} />
         </Routes>
       </main>

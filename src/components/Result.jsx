@@ -13,6 +13,7 @@ function Result({ mbtiResult }) {
 
   const shareToKakao = () => {
     if (window.Kakao) {
+      const shareUrl = `${window.location.origin}/result/${mbtiResult}`;
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
@@ -20,8 +21,8 @@ function Result({ mbtiResult }) {
           description: `${resultData?.title}\n${resultData?.content}`.slice(0, 200) + '...',
           imageUrl: 'https://mbti-test-share.com/mbti-image.jpg',
           link: {
-            mobileWebUrl: `${window.location.origin}/result/${mbtiResult}`,
-            webUrl: `${window.location.origin}/result/${mbtiResult}`,
+            mobileWebUrl: shareUrl,
+            webUrl: shareUrl,
           },
         },
         social: {
@@ -33,8 +34,8 @@ function Result({ mbtiResult }) {
           {
             title: '결과 확인하기',
             link: {
-              mobileWebUrl: `${window.location.origin}/result/${mbtiResult}`,
-              webUrl: `${window.location.origin}/result/${mbtiResult}`,
+              mobileWebUrl: shareUrl,
+              webUrl: shareUrl,
             },
           },
         ],
