@@ -77,6 +77,7 @@ function App() {
 
       {/* Main content */}
       <main className="m-2 flex-1 flex flex-col items-center pt-8">
+
         <div className="w-full max-w-4xl mx-auto">
           {!showResult ? (
             <Question
