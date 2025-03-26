@@ -16,9 +16,14 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.AWS_SSH_KEY }}" > ~/.ssh/aws.key
+          echo "${{ secrets.AWS_SSH_KEY }}" | tr -d '\r' > ~/.ssh/aws.key
           chmod 600 ~/.ssh/aws.key
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/aws.key
           echo -e "Host ec2\n\tHostName ${{ secrets.AWS_HOST }}\n\tUser ${{ secrets.AWS_USERNAME }}\n\tIdentityFile ~/.ssh/aws.key\n\tStrictHostKeyChecking no" > ~/.ssh/config
+
+      - name: Test SSH connection
+        run: ssh -v ec2 'echo "SSH connection successful"'
 
       - name: Deploy to EC2
         run: |
