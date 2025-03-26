@@ -1,0 +1,32 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main  # 또는 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AWS_SSH_KEY }}" > ~/.ssh/aws.key
+          chmod 600 ~/.ssh/aws.key
+          echo -e "Host ec2\n\tHostName ${{ secrets.AWS_HOST }}\n\tUser ${{ secrets.AWS_USERNAME }}\n\tIdentityFile ~/.ssh/aws.key\n\tStrictHostKeyChecking no" > ~/.ssh/config
+
+      - name: Deploy to EC2
+        run: |
+          ssh ec2 '
+            cd /usr/share/nginx/react-mbti-new &&
+            sudo git pull origin main &&
+            # 필요한 경우 추가 배포 명령어 실행
+            npm install
+            npm run build
+            sudo systemctl restart nginx
+          ' 
