@@ -1,17 +1,21 @@
-import { useState } from 'react'
-import Question from './components/Question'
-import Result from './components/Result'
+import { Routes, Route } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import Test from './components/Test'
+import SharedResult from './components/SharedResult'
 import { questions_mbti } from './data/questions'
 import './App.css'
 import myImage from './assets/icons8-tree-80.png'
 
-
-// 카카오 SDK 초기화
-if (!window.Kakao.isInitialized()) {
-  window.Kakao.init(import.meta.env.VITE_KAKAO_API_KEY);
-}
+const KAKAO_API_KEY = import.meta.env.VITE_KAKAO_API_KEY;
 
 function App() {
+  // Kakao SDK 초기화
+  useEffect(() => {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(KAKAO_API_KEY);
+    }
+  }, []);
+
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [mbtiResult, setMbtiResult] = useState({
     E: 0, I: 0,
@@ -77,27 +81,15 @@ function App() {
 
       {/* Main content */}
       <main className="m-2 flex-1 flex flex-col items-center pt-8">
-
-        <div className="w-full max-w-4xl mx-auto">
-          {!showResult ? (
-            <Question
-              question={questions_mbti[currentQuestion].question}
-              onAnswer={handleAnswer}
-              progress={(currentQuestion + 1) / questions_mbti.length * 100}
-              currentQuestion={currentQuestion}
-              totalQuestions={questions_mbti.length}
-              onPrevious={handlePrevious}
-              onReset={handleReset}
-            />
-          ) : (
-            <Result mbtiResult={mbtiResult} />
-          )}
-        </div>
+        <Routes>
+          <Route path="/" element={<Test />} />
+          <Route path="/result/:mbtiResult" element={<SharedResult />} />
+        </Routes>
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-200 p-4 text-center">
-        <p>© 2024 MBTI Test. All rights reserved.</p>
+        <p>© 2025 MBTI Test. All rights reserved.</p>
       </footer>
     </div>
   )

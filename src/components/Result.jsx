@@ -1,11 +1,12 @@
 import React from 'react';
 import { type_result } from '../data/results';
+import { useNavigate } from 'react-router-dom';
 
 const domainUrl = "http://react.koiforever.p-e.kr/"
 function Result({ mbtiResult }) {
-  // MBTI 결과에 해당하는 설명 찾기
+  const navigate = useNavigate();
   const resultData = type_result.find(item => item.type === mbtiResult);
-
+  console.log(">>resultData:", resultData);
   const handleRetryClick = () => {
     window.location.reload();
   };
@@ -19,8 +20,8 @@ function Result({ mbtiResult }) {
           description: `${resultData?.title}\n${resultData?.content}`.slice(0, 200) + '...',
           imageUrl: 'https://mbti-test-share.com/mbti-image.jpg',
           link: {
-            mobileWebUrl: domainUrl,
-            webUrl: domainUrl,
+            mobileWebUrl: `${window.location.origin}/result/${mbtiResult}`,
+            webUrl: `${window.location.origin}/result/${mbtiResult}`,
           },
         },
         social: {
@@ -30,10 +31,10 @@ function Result({ mbtiResult }) {
         },
         buttons: [
           {
-            title: 'MBTI TEST',
+            title: '결과 확인하기',
             link: {
-              mobileWebUrl: domainUrl,
-              webUrl: domainUrl,
+              mobileWebUrl: `${window.location.origin}/result/${mbtiResult}`,
+              webUrl: `${window.location.origin}/result/${mbtiResult}`,
             },
           },
         ],
