@@ -62,16 +62,16 @@ function Result({ mbtiResult }) {
         className="text-xl prose prose-lg max-w-none mb-8"
         dangerouslySetInnerHTML={{ __html: resultData?.content }} 
       />
-      <div className="md:flex justify-center gap-4">
+      <div className="flex flex-col md:flex-row justify-center gap-2">
         <button
           onClick={shareToKakao}
-          className="px-6 py-3 bg-yellow-300 text-black rounded-full hover:bg-yellow-400 transition-colors"
+          className="px-6 py-3 bg-yellow-300 text-black rounded-full hover:bg-yellow-400 transition-colors w-64 mx-auto"
         >
           카카오톡 공유하기
         </button>
         <button
           onClick={handleRetryClick}
-          className="px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
+          className="px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors w-64 mx-auto"
         >
           다시 테스트하기
         </button>
