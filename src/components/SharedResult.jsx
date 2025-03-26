@@ -1,9 +1,20 @@
 import { useParams } from 'react-router-dom';
-import { mbtiData } from '../data/mbtiData';
+import { type_result } from '../data/results';
 
 function SharedResult() {
   const { mbtiResult } = useParams();
-  const resultData = mbtiData[mbtiResult];
+  const resultData = type_result.find(item => item.type === mbtiResult);
+
+  if (!resultData) {
+    return (
+      <div className="text-center py-10">
+        <h1 className="text-2xl font-bold">잘못된 MBTI 결과입니다</h1>
+        <a href="/" className="text-blue-500 hover:underline mt-4 block">
+          테스트 다시하기
+        </a>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-8 max-w-[800px] w-full mx-auto">
@@ -12,10 +23,11 @@ function SharedResult() {
       </h2>
       
       <div className="mb-8">
-        <h3 className="text-xl font-bold mb-4">{resultData?.title}</h3>
-        <p className="text-gray-700 leading-relaxed">
-          {resultData?.content}
-        </p>
+        <h3 className="text-xl font-bold mb-4">{resultData.title}</h3>
+        <div 
+          className="text-gray-700 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: resultData.content }}
+        />
       </div>
 
       <div className="text-center">

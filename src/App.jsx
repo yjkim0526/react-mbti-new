@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Test from './components/Test'
+import Result from './components/Result'
 import SharedResult from './components/SharedResult'
 import { questions_mbti } from './data/questions'
 import './App.css'
@@ -72,33 +73,28 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="bg-blue-600 text-white p-4 flex items-center gap-2">
-        <img className='ml-2' src={myImage} alt="icon image" width={50} height={50} />
-        <h1 className="text-2xl font-bold">MBTI Test</h1>
-      </header>
-
-      {/* Main content */}
-      <main className="m-2 flex-1 flex flex-col items-center pt-8">
+    <div className="min-h-screen bg-gray-100 py-8">
+      <div className="container mx-auto px-4">
         <Routes>
-          <Route path="/" element={<Test 
-            currentQuestion={currentQuestion}
-            handleAnswer={handleAnswer}
-            handlePrevious={handlePrevious}
-            showResult={showResult}
-            mbtiResult={mbtiResult}
-          />} />
+          {/* 메인 테스트 페이지 */}
+          <Route path="/" element={<Test />} />
+          
+          {/* 테스트 결과 페이지 */}
           <Route path="/result/:mbtiResult" element={<SharedResult />} />
+          
+          {/* 404 페이지 */}
+          <Route path="*" element={
+            <div className="text-center py-10">
+              <h1 className="text-2xl font-bold">페이지를 찾을 수 없습니다</h1>
+              <a href="/" className="text-blue-500 hover:underline mt-4 block">
+                테스트 다시하기
+              </a>
+            </div>
+          } />
         </Routes>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-200 p-4 text-center">
-        <p>© 2025 MBTI Test. All rights reserved.</p>
-      </footer>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
