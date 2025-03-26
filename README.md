@@ -14,6 +14,4 @@ npm run dev
 ```
 
 # React + Vite
-- React
 - Tailwind CSS
-- Vite
