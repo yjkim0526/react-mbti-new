@@ -71,7 +71,7 @@ function Result({ mbtiResult }) {
         </button>
         <button
           onClick={handleRetryClick}
-          className="px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors w-64 mx-auto"
+          className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-green-600 transition-colors w-64 mx-auto"
         >
           다시 테스트하기
         </button>
