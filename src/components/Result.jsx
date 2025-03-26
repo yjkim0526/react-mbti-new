@@ -1,7 +1,7 @@
 import React from 'react';
-import './Result.css';
 import { type_result } from '../data/results';
 
+const domainUrl = "http://react.koiforever.p-e.kr/"
 function Result({ mbtiResult }) {
   // MBTI 결과에 해당하는 설명 찾기
   const resultData = type_result.find(item => item.type === mbtiResult);
@@ -16,19 +16,24 @@ function Result({ mbtiResult }) {
         objectType: 'feed',
         content: {
           title: `나의 MBTI 결과는 ${mbtiResult} 입니다!`,
-          description: `${resultData?.title}\n\n${resultData?.content}`,
-          imageUrl: 'https://images.unsplash.com/photo-1740520949162-b0a74db3c973?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDkxfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D',
+          description: `${resultData?.title}\n${resultData?.content}`.slice(0, 200) + '...',
+          imageUrl: 'https://mbti-test-share.com/mbti-image.jpg',
           link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            mobileWebUrl: domainUrl,
+            webUrl: domainUrl,
           },
+        },
+        social: {
+          likeCount: 286,
+          commentCount: 45,
+          sharedCount: 845
         },
         buttons: [
           {
-            title: '테스트 하러가기',
+            title: 'MBTI TEST',
             link: {
-              mobileWebUrl: window.location.href,
-              webUrl: window.location.href,
+              mobileWebUrl: domainUrl,
+              webUrl: domainUrl,
             },
           },
         ],
@@ -38,7 +43,7 @@ function Result({ mbtiResult }) {
 
   return (
     
-    <div className="m-2 bg-white rounded-lg shadow-lg py-10 px-20 max-w-[800px] w-full gap-2 mx-auto min-h-[600px] flex flex-col ju
+    <div className="m-2 bg-white rounded-lg shadow-lg py-10 px-1 md:px-20 max-w-[800px] w-full gap-2 mx-auto min-h-[600px] flex flex-col ju
     ">
       <div className='flex justify-center items-center gap-2'>
         <h2 className="text-4xl font-bold ">당신의 MBTI는</h2>
