@@ -1,7 +1,6 @@
 import React from 'react';
 import './Result.css';
 import { type_result } from '../data/results';
-import myImage2 from '../assets/icons8-tree-48.png'
 
 function Result({ mbtiResult }) {
   // MBTI 결과에 해당하는 설명 찾기
