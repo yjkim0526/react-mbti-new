@@ -74,6 +74,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 py-8">
+      <header className="container mx-auto px-4 mb-8">
+        <div className="flex items-center justify-center">
+          <img src={myImage} alt="로고" className="w-12 h-12" />
+          <h1 className="text-3xl font-bold text-center ml-2">MBTI 테스트</h1>
+        </div>
+      </header>
+
       <div className="container mx-auto px-4">
         <Routes>
           {/* 메인 테스트 페이지 */}
@@ -93,6 +100,10 @@ function App() {
           } />
         </Routes>
       </div>
+
+      <footer className="container mx-auto px-4 mt-8 text-center text-gray-600">
+        <p>© 2024 MBTI 테스트. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
