@@ -3,6 +3,7 @@ import { type_result } from '../data/results';
 
 function SharedResult() {
   const { mbtiResult } = useParams();
+  console.log(">>mbtiResult:", mbtiResult);
   const resultData = type_result.find(item => item.type === mbtiResult);
 
   if (!resultData) {

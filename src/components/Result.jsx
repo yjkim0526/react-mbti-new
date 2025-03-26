@@ -19,7 +19,7 @@ function Result({ mbtiResult }) {
         content: {
           title: `나의 MBTI 결과는 ${mbtiResult} 입니다!`,
           description: `${resultData?.title}\n${resultData?.content}`.slice(0, 200) + '...',
-          imageUrl: 'https://mbti-test-share.com/mbti-image.jpg',
+          imageUrl: '',
           link: {
             mobileWebUrl: shareUrl,
             webUrl: shareUrl,
@@ -42,6 +42,7 @@ function Result({ mbtiResult }) {
       });
     }
   };
+
 
   return (
     
@@ -75,6 +76,7 @@ function Result({ mbtiResult }) {
           다시 테스트하기
         </button>
       </div>
+
     </div>
   );
 }
