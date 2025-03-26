@@ -25,11 +25,11 @@ function Result({ mbtiResult }) {
             webUrl: shareUrl,
           },
         },
-        social: {
-          likeCount: 286,
-          commentCount: 45,
-          sharedCount: 845
-        },
+        // social: {
+        //   likeCount: 286,
+        //   commentCount: 45,
+        //   sharedCount: 845
+        // },
         buttons: [
           {
             title: '결과 확인하기',
