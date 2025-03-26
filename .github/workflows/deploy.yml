@@ -31,7 +31,7 @@ jobs:
             cd /usr/share/nginx/react-mbti-new &&
             sudo git pull origin main &&
             # 필요한 경우 추가 배포 명령어 실행
-            npm install
-            npm run build
+            sudo npm install
+            sudo npm run build
             sudo systemctl restart nginx
           ' 
