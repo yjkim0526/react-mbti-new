@@ -11,14 +11,14 @@ function Result({ mbtiResult }) {
     window.location.reload();
   };
 
-  const handleShareClick = () => {
+  const shareToKakao = () => {
     if (window.Kakao) {
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: `당신의 MBTI는 ${mbtiResult}입니다!`,
-          description: `${resultData?.title || ''} - MBTI 테스트 결과`,
-          imageUrl: 'YOUR_IMAGE_URL', // 공유할 이미지 URL
+          title: `나의 MBTI 결과는 ${mbtiResult} 입니다!`,
+          description: `${resultData?.title}\n\n${resultData?.content}`,
+          imageUrl: 'https://images.unsplash.com/photo-1740520949162-b0a74db3c973?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDkxfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D',
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
@@ -57,7 +57,7 @@ function Result({ mbtiResult }) {
       />
       <div className="flex justify-center gap-4">
         <button
-          onClick={handleShareClick}
+          onClick={shareToKakao}
           className="px-6 py-3 bg-yellow-300 text-black rounded-full hover:bg-yellow-400 transition-colors"
         >
           카카오톡 공유하기
