@@ -2,7 +2,7 @@ import React from 'react';
 import './Question.css';
 import myImage2 from '../assets/icons8-tree-48.png'
 
-function Question({ question, onAnswer, progress, currentQuestion, totalQuestions, onPrevious, onReset }) {
+function Question({ question, options, onAnswer, progress, currentQuestion, totalQuestions, onPrevious, onReset }) {
   return (
     <div className="question-container bg-white rounded-lg shadow-lg py-10 px-14 max-w-[800px] w-full mx-auto min-h-[500px] flex flex-col">
       
@@ -30,16 +30,16 @@ function Question({ question, onAnswer, progress, currentQuestion, totalQuestion
         </h2>
        
         <button
-          onClick={() => onAnswer("그렇다")}
-          className="answer-button w-60 bg-green-500 text-white rounded-full text-lg py-3 font-bold"
+          onClick={() => onAnswer(true)}
+          className="answer-button w-full bg-green-600 text-white rounded-full text-lg py-3 font-bold"
         >
-          그렇다
+          {options[0]}
         </button>
         <button
-          onClick={() => onAnswer("아니다")}
-          className="answer-button w-60 bg-green-500 text-white rounded-full text-lg py-3 font-bold"
+          onClick={() => onAnswer(false)}
+          className="answer-button w-full bg-green-600 text-white rounded-full text-lg py-3 font-bold"
         >
-          아니다
+          {options[1]}
         </button>
 
         <div className="flex justify-between w-full mt-8">

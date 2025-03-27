@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Question from './Question';
 import Result from './Result';
-import { questions_mbti } from '../data/questions';
+import { additional_questions_mbti } from '../data/questions';
 
 function Test() {
   // MBTI 테스트 관련 상태 관리
@@ -25,7 +25,7 @@ function Test() {
   // 답변 처리 함수
   const handleAnswer = (answer) => {
     // MBTI 점수 계산 및 다음 질문으로 이동
-    const questionType = questions_mbti[currentQuestion];
+    const questionType = additional_questions_mbti[currentQuestion];
     const score = answer === "그렇다" ? questionType.YES : questionType.NO;
     
     setMbtiResult(prev => ({
@@ -36,7 +36,7 @@ function Test() {
     setAnswers(prev => [...prev, answer]);
 
     // 마지막 질문인 경우 결과 화면으로 전환
-    if (currentQuestion === questions_mbti.length - 1) {
+    if (currentQuestion === additional_questions_mbti.length - 1) {
       setShowResult(true);
     } else {
       setCurrentQuestion(prev => prev + 1);
@@ -49,7 +49,7 @@ function Test() {
       setCurrentQuestion(prev => prev - 1);
       // 마지막 답변 제거
       const lastAnswer = answers[answers.length - 1];
-      const lastQuestion = questions_mbti[currentQuestion - 1];
+      const lastQuestion = additional_questions_mbti[currentQuestion - 1];
       const lastScore = lastAnswer === "그렇다" ? lastQuestion.YES : lastQuestion.NO;
       
       setAnswers(prev => prev.slice(0, -1));
@@ -74,11 +74,12 @@ function Test() {
     <>
       {!showResult ? (
         <Question
-          question={questions_mbti[currentQuestion].question}
+          question={additional_questions_mbti[currentQuestion].question}
+          options={additional_questions_mbti[currentQuestion].options}
           onAnswer={handleAnswer}
-          progress={(currentQuestion + 1) / questions_mbti.length * 100}
+          progress={(currentQuestion + 1) / additional_questions_mbti.length * 100}
           currentQuestion={currentQuestion}
-          totalQuestions={questions_mbti.length}
+          totalQuestions={additional_questions_mbti.length}
           onPrevious={handlePrevious}
           onReset={handleReset}
         />

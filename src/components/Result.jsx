@@ -54,7 +54,7 @@ function Result({ mbtiResult }) {
         {resultData?.title}
       </h3>
       <div 
-        className="text-xl prose prose-lg max-w-none mb-8"
+        className="p-2 text-xl prose prose-lg max-w-none mb-8"
         dangerouslySetInnerHTML={{ __html: resultData?.content }} 
       />
       <div className="flex flex-col md:flex-row justify-center gap-2">
